@@ -30,4 +30,10 @@ export class UserComponent {
   get imagePath() {
     return 'assets/users/' + this.selectedUser.avatar;
   }
+
+  //This is a method that is called when the user clicks on the button in the template.
+  // This is method that also can be accessible in html file
+  onUserClick() {
+    console.log('User clicked!');
+  }
 }
