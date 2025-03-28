@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
   // Standalose set true means this component will be treated as standalone type component.
   templateUrl: './header.component.html',// The HTML template for the header component. This file contains the structure and layout of the header.
   // The templateUrl is used to link the HTML file to the component.
+  styleUrl: './header.component.css', // The CSS file for the header component. This file contains the styles for the header.
 })
 export class HeaderComponent {
   // Add any properties or methods for the header component here
