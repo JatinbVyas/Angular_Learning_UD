@@ -1,0 +1,16 @@
+<div>
+  <!-- Here we see event listner 
+  Whenever you want to listen to an event, you can use round brackets.
+  Here we are listening to click event on button and calling onUserClick() method of component class. 
+  -->
+  <button (click)="onUserClick()">
+    <!-- Another way to use variable of component class is with property binding
+    Here for giving sourcte to image we are using property binding.
+    When we wrap property in square brackets, it means we are using property binding.
+    We can use property binding for any property of HTML tag. 
+    -->
+    <img [src]="imagePath" [alt]="selectedUser.name" />
+    <!-- using string interpolation we can access public variable of class and can be use like below -->
+    <span>{{ selectedUser.name }}</span>
+  </button>
+</div>
