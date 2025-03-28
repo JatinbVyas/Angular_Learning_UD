@@ -11,12 +11,12 @@ export const DUMMY_USERS = [
   },
   {
     id: 'u3',
-    name: 'Maan Vyas',
+    name: 'Sam Vyas',
     avatar: 'user-3.jpg',
   },
   {
     id: 'u4',
-    name: 'Sam Vyas',
+    name: 'Maan Vyas',
     avatar: 'user-4.jpg',
   },
   {
