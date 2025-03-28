@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
-/**
- * This @Coomponent decorator is used to define the metadata for the component.
- */
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -16,28 +13,25 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 export class UserComponent {
   /**
-   * Below selectedUser is a property of the class UserComponent.
-   * And we assign reandom user from the DUMMY_USERS array to it.
-   * This selectedUser variable is used/accesible in the template/ user.component.html file to display the user details.
+   *Here we learn about the signal API in Angular.
+   * The signal API is a new way to manage state in Angular applications.
+   * It allows you to create reactive properties that automatically update the template when their values change.
+   * The signal API is similar to the useState and useEffect hooks in React.
+   * It is a new way to manage state in Angular applications.
+   * We can give initial value to the signal API by providing a value to the signal function in brackets.
    */
-  selectedUser = DUMMY_USERS[randomIndex];
+  selectedUser = signal(DUMMY_USERS[randomIndex]);
 
-  /**
-   * This is a getter method that returns the path of the image based on the selected user's avatar.
-   * The imagePath property is used in the user.component.html file to display the user's avatar image.
-   * it is like get set in Asp.net
-   */
-  get imagePath() {
-    return 'assets/users/' + this.selectedUser.avatar;
-  }
-
-  //This is a method that is called when the user clicks on the button in the template.
-  // This is method that also can be accessible in html file
-  onUserClick() {
-    //So now when the user clicks on the button, we will select a random user from the DUMMY_USERS array and assign it to the selectedUser property.
-    //This will update the selectedUser property and the template will automatically re-render to display the new user's details.
-    //This is called state management in Angular. When the state of the component changes, Angular automatically re-renders the template to reflect the new state.
+  // We can use the computed method to create a derived signal.
+  // The computed method is similar to the useMemo hook in React.
+  // It allows you to create a signal that depends on other signals.
+  // The computed method takes a function as an argument and returns a signal that updates automatically when the values of the signals it depends on change.
+   imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
+   
+  onUserClick() {    
     const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser = DUMMY_USERS[randomIndex];
+    // We can use the set method to update the value of the signal.
+    // The set method is similar to the setState method in React.
+    this.selectedUser.set(DUMMY_USERS[randomIndex]);
   }
 }
