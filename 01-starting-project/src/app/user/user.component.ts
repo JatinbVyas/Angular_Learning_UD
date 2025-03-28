@@ -34,6 +34,10 @@ export class UserComponent {
   //This is a method that is called when the user clicks on the button in the template.
   // This is method that also can be accessible in html file
   onUserClick() {
-    console.log('User clicked!');
+    //So now when the user clicks on the button, we will select a random user from the DUMMY_USERS array and assign it to the selectedUser property.
+    //This will update the selectedUser property and the template will automatically re-render to display the new user's details.
+    //This is called state management in Angular. When the state of the component changes, Angular automatically re-renders the template to reflect the new state.
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUser = DUMMY_USERS[randomIndex];
   }
 }
