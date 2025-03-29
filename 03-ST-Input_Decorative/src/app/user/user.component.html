@@ -1,0 +1,13 @@
+<div>
+ 
+  <button (click)="onUserClick()">
+    
+    <img [src]="imagePath()" [alt]="selectedUser().name" />
+    <!-- We use signal, so for access property of signal variable we need to give round bracket and then give
+     propery name.
+      For example: selectedUser().name. If we use selectedUser.name, it will give error.
+      This way it calles signal read method and that will give us the latest value of signal variable.
+      -->
+    <span>{{ selectedUser().name }}</span>
+  </button>
+</div>
