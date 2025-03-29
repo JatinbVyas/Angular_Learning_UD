@@ -2,11 +2,11 @@
  
   <button (click)="onUserClick()">
     
-    <img [src]="imagePath" [alt]="name" />
+    <img [src]="imagePath()" [alt]="name()" />
     <!--we seen the use of input decorator in the user component.
     We are passing the value of avtar and name from app component to user component via property binding.
     Here we are using property binding to pass the value of avtar and name to the user component.
       -->
-    <span>{{ name }}</span>
+    <span>{{ name() }}</span>
   </button>
 </div>
