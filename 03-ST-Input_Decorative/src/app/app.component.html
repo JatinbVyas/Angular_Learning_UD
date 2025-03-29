@@ -1,0 +1,18 @@
+<app-header></app-header>
+
+<main>
+  <ul id="users">
+    <li>
+      <!-- here avtar and name are used as property.
+      We can use any name for property, but it should be same in the component.
+      In user component we nameed both property as avtar and name using @input decorator.
+      so here we are using same names. Now this property will be passed to user component. 
+      -->
+      <app-user [avtar]="users[0].avatar" [name]="users[0].name"></app-user>
+    </li>
+    <li>
+      <app-user [avtar]="users[1].avatar" [name]="users[1].name"></app-user>
+    </li>
+  </ul>
+</main>
+  
