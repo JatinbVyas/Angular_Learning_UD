@@ -2,12 +2,11 @@
  
   <button (click)="onUserClick()">
     
-    <img [src]="imagePath()" [alt]="selectedUser().name" />
-    <!-- We use signal, so for access property of signal variable we need to give round bracket and then give
-     propery name.
-      For example: selectedUser().name. If we use selectedUser.name, it will give error.
-      This way it calles signal read method and that will give us the latest value of signal variable.
+    <img [src]="imagePath" [alt]="name" />
+    <!--we seen the use of input decorator in the user component.
+    We are passing the value of avtar and name from app component to user component via property binding.
+    Here we are using property binding to pass the value of avtar and name to the user component.
       -->
-    <span>{{ selectedUser().name }}</span>
+    <span>{{ name }}</span>
   </button>
 </div>
