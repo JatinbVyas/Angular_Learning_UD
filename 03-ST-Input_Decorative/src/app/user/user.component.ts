@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, computed, input, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,21 +8,28 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  /**
-   * Here we seen the use of @Input decorator.
-   * It is used to pass data from parent component to child component.
-   * In this case avtar and name properties are accessible to app component also
-   * 
-   * Here we seen the use of required property in @Input decorator.
-   * It is used to make the input property required. If the property is not passed from parent component, it will gives error.
-   * In this case avtar and name properties are required to be passed from app component.
-   */
-  @Input({required: true}) avtar!: string;
-  @Input({required: true}) name!: string;
+  
+//  @Input({required: true}) avtar!: string;
+ // @Input({required: true}) name!: string;
 
-  get imagePath() {
-    return 'assets/users/' + this.avtar;
-  }
+ /**
+  * This is input signal feature of angular 16+
+  * using this lower case input is used to define input signal.
+  * .required means this is required property.
+  * And when we use input signal at that time we need computed function to get computed values.
+  * get method can't be used.
+  * There will be no changes in app component.html file but , in  user.component.html changes are required.
+  * At there we need to use this.avtar() and this.name() instead of this.avtar and this.name.
+  */
+ avtar = input.required<string>();
+ name = input.required<string>();
+ imagePath = computed(() => {
+    return 'assets/users/' + this.avtar();
+  });
+
+  // get imagePath() {
+  //   return 'assets/users/' + this.avtar;
+  // }
   onUserClick() {    
   
   }
