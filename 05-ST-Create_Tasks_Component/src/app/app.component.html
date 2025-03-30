@@ -6,19 +6,31 @@
       this will iterate over the users array and create a list of users
       and we are using trackBy to track the changes in the list of users 
     -->
-    @for(ur of users; track ur.id){
-    <li>
+    <!-- @for(ur of users; track ur.id){ -->
+    <!-- Here we seen the ngFor, this is Angular decorative to run for loop
+      syntax is as below. 
+     -->
+    <li *ngFor="let ur of users">
       <app-user [user]="ur" (select)="onSelectUser($event)"></app-user>
     </li>
-    }
+    <!-- } -->
   </ul>
   <!-- We have if else block also in Angular and can be used as below.
   Here we are checking if selectedUser is not null then we are showing the tasks component
   and if selectedUser is null then we are showing the fallback message.
   -->
-  @if(selectedUser){
-  <app-tasks [name]="selectedUser.name"></app-tasks>
-  } @else {
-  <p id="fallback">Select a user to see their tasks</p>
-  }
+  <!-- @if(selectedUser){ -->
+  <!-- Here we are using the ngIf directive to check if selectedUser is not null
+  and if it is not null then we are showing the tasks component
+  syntaz is as below. -->
+  <app-tasks
+    *ngIf="selectedUser; else fallback"
+    [name]="selectedUser.name"
+  ></app-tasks>
+  <!-- } @else { -->
+  <ng-template #fallback>
+    <p id="fallback">Select a user to see their tasks</p>
+  </ng-template>
+
+  <!-- } -->
 </main>
