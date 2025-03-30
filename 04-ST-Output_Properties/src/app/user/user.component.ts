@@ -17,6 +17,8 @@ export class UserComponent {
   // The select event is emitted when the user clicks on the user component.
   // Here we define select event , this can be used as event binding in the parent component.
   // The select event is emitted when the user clicks on the user component.
+  //Here in EventEmitter we define <string> as the type of data that will be emitted.
+  // In this case, it will emit a string value only not any other type of data.
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
