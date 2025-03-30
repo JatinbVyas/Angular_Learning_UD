@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UserTasksComponent } from './userTasks/userTasks.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { insertTaskObj } from './userTasks/userTasks.model';
 
 @Component({
   selector: 'app-tasks',
@@ -55,6 +56,18 @@ export class TasksComponent {
 
   cancelPopupCallce() {
     console.log('Cancel Popup Called');
+    this.isAddtaskClicked = false;
+  }
+
+  saveTask(taskObj: insertTaskObj) {
+    console.log('Save Task Called', taskObj);
+    this.dummyTasks.push({
+      id: 't' + (this.dummyTasks.length + 1),
+      userId: this.userId,
+      title: taskObj.title,
+      summary: taskObj.summary,
+      dueDate: taskObj.dueDate,
+    });
     this.isAddtaskClicked = false;
   }
 }

@@ -5,3 +5,9 @@ export interface UserTasksObj {
   summary: string;
   dueDate: string;
 }
+
+export interface insertTaskObj {
+  title: string;
+  summary: string;
+  dueDate: string;
+}

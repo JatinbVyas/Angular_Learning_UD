@@ -1,5 +1,8 @@
 @if(isAddtaskClicked){
-<app-add-task (cancelPopup)="cancelPopupCallce()"></app-add-task>
+<app-add-task
+  (cancelPopup)="cancelPopupCallce()"
+  (insertTask)="saveTask($event)"
+></app-add-task>
 }
 <section id="tasks">
   <header>
