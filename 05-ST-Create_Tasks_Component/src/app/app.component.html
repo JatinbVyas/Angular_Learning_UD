@@ -12,5 +12,13 @@
     </li>
     }
   </ul>
-  <app-tasks [name]="selectedUser?.name"></app-tasks>
+  <!-- We have if else block also in Angular and can be used as below.
+  Here we are checking if selectedUser is not null then we are showing the tasks component
+  and if selectedUser is null then we are showing the fallback message.
+  -->
+  @if(selectedUser){
+  <app-tasks [name]="selectedUser.name"></app-tasks>
+  } @else {
+  <p id="fallback">Select a user to see their tasks</p>
+  }
 </main>
