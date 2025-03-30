@@ -16,7 +16,7 @@ export class AppComponent {
   selectedUserId = 'u1';
 
   get selectedUser() {
-    return this.users.find((user) => user.id === this.selectedUserId)!;
+    return this.users.find((user) => user.id === this.selectedUserId);
   }
 
   //This method is called from usre component ts file , once user clicks on the user component.
