@@ -25,6 +25,7 @@
   syntaz is as below. -->
   <app-tasks
     *ngIf="selectedUser; else fallback"
+    [userId]="selectedUser.id"
     [name]="selectedUser.name"
   ></app-tasks>
   <!-- } @else { -->
