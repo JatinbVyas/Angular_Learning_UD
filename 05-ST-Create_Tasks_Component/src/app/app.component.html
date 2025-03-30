@@ -2,14 +2,15 @@
 
 <main>
   <ul id="users">
+    <!-- Here we used for loop similar like java script in html file
+      this will iterate over the users array and create a list of users
+      and we are using trackBy to track the changes in the list of users 
+    -->
+    @for(ur of users; track ur.id){
     <li>
-      <!-- Here we define select custom event. We are using the select event to pass the id of the user to the app component. OnSelectUser is defined in app component.
-      -->
-      <app-user [user]="users[0]" (select)="onSelectUser($event)"></app-user>
+      <app-user [user]="ur" (select)="onSelectUser($event)"></app-user>
     </li>
-    <li>
-      <app-user [user]="users[1]" (select)="onSelectUser($event)"></app-user>
-    </li>
+    }
   </ul>
   <app-tasks [name]="selectedUser?.name"></app-tasks>
 </main>
