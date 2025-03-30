@@ -1,7 +1,7 @@
 @if(isAddtaskClicked){
 <app-add-task
+  [userId]="userId"
   (cancelPopup)="cancelPopupCallce()"
-  (insertTask)="saveTask($event)"
 ></app-add-task>
 }
 <section id="tasks">

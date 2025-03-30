@@ -48,10 +48,4 @@ export class TasksComponent {
     console.log('Cancel Popup Called');
     this.isAddtaskClicked = false;
   }
-
-  saveTask(taskObj: insertTaskObj) {
-    console.log('Save Task Called', taskObj);
-    this._tasksService.addTask(taskObj, this.userId);
-    this.isAddtaskClicked = false;
-  }
 }
