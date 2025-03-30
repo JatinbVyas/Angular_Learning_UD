@@ -1,8 +1,11 @@
+@if(isAddtaskClicked){
+<app-add-task (cancelPopup)="cancelPopupCallce()"></app-add-task>
+}
 <section id="tasks">
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onAddTaskClick()">Add Task</button>
     </menu>
   </header>
   <ul>

@@ -1,16 +1,18 @@
 import { Component, Input } from '@angular/core';
-import { AddTaskComponent } from './userTasks/userTasks.component';
+import { UserTasksComponent } from './userTasks/userTasks.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [AddTaskComponent],
+  imports: [UserTasksComponent, AddTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
   @Input({ required: true }) userId!: string;
   @Input() name?: string;
+  isAddtaskClicked = false;
   dummyTasks = [
     {
       id: 't1',
@@ -44,5 +46,15 @@ export class TasksComponent {
   completeClickRemoveTask(taskId: string) {
     console.log('Task completed:', taskId);
     this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+  }
+
+  onAddTaskClick() {
+    console.log('Add Task Clicked');
+    this.isAddtaskClicked = true;
+  }
+
+  cancelPopupCallce() {
+    console.log('Cancel Popup Called');
+    this.isAddtaskClicked = false;
   }
 }

@@ -8,7 +8,7 @@ import { UserTasksObj } from './userTasks.model';
   templateUrl: './userTasks.component.html',
   styleUrl: './userTasks.component.css',
 })
-export class AddTaskComponent {
+export class UserTasksComponent {
   @Input({ required: true }) userTasks!: UserTasksObj;
   @Output() complete = new EventEmitter<string>();
   onCompleteClick() {
