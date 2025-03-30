@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserTasksObj } from './userTasks.model';
 
 @Component({
   selector: 'app-user-task',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './userTasks.component.html',
   styleUrl: './userTasks.component.css',
 })
-export class AddTaskComponent {}
+export class AddTaskComponent {
+  @Input({ required: true }) userTasks!: UserTasksObj;
+}

@@ -11,7 +11,11 @@
       syntax is as below. 
      -->
     <li *ngFor="let ur of users">
-      <app-user [user]="ur" (select)="onSelectUser($event)"></app-user>
+      <app-user
+        [user]="ur"
+        [isSelected]="ur.id === selectedUserId"
+        (select)="onSelectUser($event)"
+      ></app-user>
     </li>
     <!-- } -->
   </ul>
