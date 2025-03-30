@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { AddTaskComponent } from './userTasks/userTasks.component';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [],
+  imports: [AddTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
