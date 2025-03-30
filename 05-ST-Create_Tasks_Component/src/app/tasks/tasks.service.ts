@@ -35,6 +35,15 @@ export class TasksService {
     },
   ];
 
+  // The constructor initializes the dummyTasks array with data from localStorage if available.
+  // If no data is found in localStorage, it uses the default dummyTasks array.
+  constructor() {
+    const dummyTasks = localStorage.getItem('dummyTasks');
+    if (dummyTasks) {
+      this.dummyTasks = JSON.parse(dummyTasks);
+    }
+  }
+
   getUserTasks(userId: string) {
     return this.dummyTasks.filter((task) => task.userId === userId);
   }
@@ -47,9 +56,15 @@ export class TasksService {
       summary: taskObj.summary,
       dueDate: taskObj.dueDate,
     });
+    this.saveTasks();
   }
 
   removeTask(taskId: string) {
     this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+    this.saveTasks();
+  }
+
+  private saveTasks() {
+    localStorage.setItem('dummyTasks', JSON.stringify(this.dummyTasks));
   }
 }

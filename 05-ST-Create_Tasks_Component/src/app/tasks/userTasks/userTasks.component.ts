@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { UserTasksObj } from './userTasks.model';
 import { CardComponent } from '../../shared/card/card.component';
 import { DatePipe } from '@angular/common';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-user-task',
@@ -13,7 +14,12 @@ import { DatePipe } from '@angular/common';
 export class UserTasksComponent {
   @Input({ required: true }) userTasks!: UserTasksObj;
   @Output() complete = new EventEmitter<string>();
+
+  private _taskService = inject(TasksService);
   onCompleteClick() {
-    this.complete.emit(this.userTasks.id);
+    //Now instead of emitting the event, we are directly removing the task from the service.
+    //Now removing other related changes to event, just comment event emission.
+    this._taskService.removeTask(this.userTasks.id);
+    //this.complete.emit(this.userTasks.id);
   }
 }
