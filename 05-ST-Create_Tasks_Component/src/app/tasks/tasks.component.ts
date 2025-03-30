@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { UserTasksComponent } from './userTasks/userTasks.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { insertTaskObj } from './userTasks/userTasks.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -14,39 +15,28 @@ export class TasksComponent {
   @Input({ required: true }) userId!: string;
   @Input() name?: string;
   isAddtaskClicked = false;
-  dummyTasks = [
-    {
-      id: 't1',
-      userId: 'u1',
-      title: 'Master Angular',
-      summary:
-        'Learn all the basic and advanced features of Angular & how to apply them.',
-      dueDate: '2025-12-31',
-    },
-    {
-      id: 't2',
-      userId: 'u3',
-      title: 'Build first prototype',
-      summary: 'Build a first prototype of the online shop website',
-      dueDate: '2024-05-31',
-    },
-    {
-      id: 't3',
-      userId: 'u3',
-      title: 'Prepare issue template',
-      summary:
-        'Prepare and describe an issue template which will help with project management',
-      dueDate: '2024-06-15',
-    },
-  ];
+
+  private _tasksService: TasksService;
+
+  /**
+   * 
+   * @param tasksService - The TasksService instance is injected into the constructor.
+   * * This service is responsible for managing tasks, including adding, removing, and retrieving tasks.
+   * * The constructor initializes the private _tasksService property with the injected service instance.
+    dependency injection is a design pattern used in Angular to manage dependencies between components and services.
+   * * By injecting the TasksService into the TasksComponent, we can access its methods and properties to manage tasks. 
+  */
+  constructor(tasksService: TasksService) {
+    this._tasksService = tasksService;
+  }
 
   get selectedUserTasks() {
-    return this.dummyTasks.filter((task) => task.userId === this.userId);
+    return this._tasksService.getUserTasks(this.userId);
   }
 
   completeClickRemoveTask(taskId: string) {
     console.log('Task completed:', taskId);
-    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+    this._tasksService.removeTask(taskId);
   }
 
   onAddTaskClick() {
@@ -61,13 +51,7 @@ export class TasksComponent {
 
   saveTask(taskObj: insertTaskObj) {
     console.log('Save Task Called', taskObj);
-    this.dummyTasks.push({
-      id: 't' + (this.dummyTasks.length + 1),
-      userId: this.userId,
-      title: taskObj.title,
-      summary: taskObj.summary,
-      dueDate: taskObj.dueDate,
-    });
+    this._tasksService.addTask(taskObj, this.userId);
     this.isAddtaskClicked = false;
   }
 }
