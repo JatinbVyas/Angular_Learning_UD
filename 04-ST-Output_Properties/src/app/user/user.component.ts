@@ -1,4 +1,4 @@
-import { Component, computed, input, Input } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,29 +8,24 @@ import { Component, computed, input, Input } from '@angular/core';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  
-//  @Input({required: true}) avtar!: string;
- // @Input({required: true}) name!: string;
+  @Input({ required: true }) id!: string;
+  @Input({ required: true }) avtar!: string;
+  @Input({ required: true }) name!: string;
+  //Here we used Output decorator to create a custom event emitter
+  // that can be used to emit events from the child component to the parent component.
+  // The EventEmitter class is a built-in Angular class that allows you to create custom events.
+  // The select event is emitted when the user clicks on the user component.
+  // Here we define select event , this can be used as event binding in the parent component.
+  // The select event is emitted when the user clicks on the user component.
+  @Output() select = new EventEmitter<string>();
 
- /**
-  * This is input signal feature of angular 16+
-  * using this lower case input is used to define input signal.
-  * .required means this is required property.
-  * And when we use input signal at that time we need computed function to get computed values.
-  * get method can't be used.
-  * There will be no changes in app component.html file but , in  user.component.html changes are required.
-  * At there we need to use this.avtar() and this.name() instead of this.avtar and this.name.
-  */
- avtar = input.required<string>();
- name = input.required<string>();
- imagePath = computed(() => {
-    return 'assets/users/' + this.avtar();
-  });
-
-  // get imagePath() {
-  //   return 'assets/users/' + this.avtar;
-  // }
-  onUserClick() {    
-  
+  get imagePath() {
+    return 'assets/users/' + this.avtar;
+  }
+  //This method is called when the user clicks on the user component.
+  // It emits the select event with the id of the user as the payload.
+  onUserClick() {
+    console.log('User clicked:', this.id);
+    this.select.emit(this.id);
   }
 }
