@@ -5,20 +5,10 @@
     <li>
       <!-- Here we define select custom event. We are using the select event to pass the id of the user to the app component. OnSelectUser is defined in app component.
       -->
-      <app-user
-        [id]="users[0].id"
-        [avtar]="users[0].avatar"
-        [name]="users[0].name"
-        (select)="onSelectUser($event)"
-      ></app-user>
+      <app-user [user]="users[0]" (select)="onSelectUser($event)"></app-user>
     </li>
     <li>
-      <app-user
-        [id]="users[1].id"
-        [avtar]="users[1].avatar"
-        [name]="users[1].name"
-        (select)="onSelectUser($event)"
-      ></app-user>
+      <app-user [user]="users[1]" (select)="onSelectUser($event)"></app-user>
     </li>
   </ul>
   <app-tasks [name]="selectedUser?.name"></app-tasks>
