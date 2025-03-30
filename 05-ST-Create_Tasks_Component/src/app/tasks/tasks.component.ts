@@ -40,4 +40,9 @@ export class TasksComponent {
   get selectedUserTasks() {
     return this.dummyTasks.filter((task) => task.userId === this.userId);
   }
+
+  completeClickRemoveTask(taskId: string) {
+    console.log('Task completed:', taskId);
+    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+  }
 }
