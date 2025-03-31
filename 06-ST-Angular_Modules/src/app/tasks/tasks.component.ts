@@ -1,7 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { UserTasksComponent } from './userTasks/userTasks.component';
-import { AddTaskComponent } from './add-task/add-task.component';
-import { insertTaskObj } from './userTasks/userTasks.model';
 import { TasksService } from './tasks.service';
 
 @Component({
