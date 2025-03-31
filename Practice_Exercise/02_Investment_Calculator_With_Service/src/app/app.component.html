@@ -1,0 +1,8 @@
+<app-header></app-header>
+<app-user-input
+  (onCalculateInvestment)="onCalculateInvestmentResults($event)"
+></app-user-input>
+<!-- <app-investment-results [investmentData]="resultData"></app-investment-results> -->
+<app-investment-results
+  [investmentData]="resultData()"
+></app-investment-results>
