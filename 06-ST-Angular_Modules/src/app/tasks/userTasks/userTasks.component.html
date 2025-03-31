@@ -1,0 +1,16 @@
+<app-card>
+  <article>
+    <h2>{{ userTasks.title }}</h2>
+    <!-- here we seen the use of date pipe to format the date. 
+    The date pipe is used to format the date in a specific format.
+    The date pipe takes a date object and formats it according to the specified format string.
+    In this case, we are using the "fullDate" format string, which will display the date in a long format (e.g., "Monday, September 27, 2021").  
+    We need to import the DatePipe in the component ts file to use it in the component.
+    -->
+    <time>{{ userTasks.dueDate | date : "fullDate" }}</time>
+    <p>{{ userTasks.summary }}</p>
+    <p class="actions">
+      <button (click)="onCompleteClick()">Complete</button>
+    </p>
+  </article>
+</app-card>
