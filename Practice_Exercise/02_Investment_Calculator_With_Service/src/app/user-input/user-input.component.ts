@@ -1,7 +1,6 @@
-import { Component, EventEmitter, output, Output, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { InvestmentModel } from '../investmentModel.model';
-import { single } from 'rxjs';
+import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-user-input',
@@ -11,14 +10,6 @@ import { single } from 'rxjs';
   styleUrl: './user-input.component.css',
 })
 export class UserInputComponent {
-  //@Output() onCalculateInvestment = new EventEmitter<InvestmentModel>();
-  onCalculateInvestment = output<InvestmentModel>();
-
-  // initialInvestment: string = '0';
-  // annualInvestment: string = '0';
-  // expectedReturn: string = '5';
-  // duration: string = '10';
-
   // Using signals for state management
   // This allows for more reactive programming and better performance in Angular applications.
   initialInvestment = signal('0');
@@ -26,9 +17,12 @@ export class UserInputComponent {
   expectedReturn = signal('5');
   duration = signal('10');
 
+  private _investmentService = inject(InvestmentService);
+
+  //constructor(private _investmentService: InvestmentService) {}
+
   onInvestmentSubmit() {
-    this.onCalculateInvestment.emit({
-      // Convert string inputs to numbers using the unary plus operator
+    this._investmentService.calculateInvestmentResults({
       initialInvestment: +this.initialInvestment(),
       annualInvestment: +this.annualInvestment(),
       expectedReturn: +this.expectedReturn(),
