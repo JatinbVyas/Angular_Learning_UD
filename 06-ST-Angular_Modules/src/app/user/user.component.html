@@ -1,0 +1,13 @@
+<app-card>
+  <!-- Here we seen special use of property binding
+  we can use property binding to set css class for the button if isSelected is true. 
+  -->
+  <button [class.active]="isSelected" (click)="onUserClick()">
+    <img [src]="imagePath" [alt]="user.name" />
+    <!--we seen the use of input decorator in the user component.
+    We are passing the value of avtar and name from app component to user component via property binding.
+    Here we are using property binding to pass the value of avtar and name to the user component.
+      -->
+    <span>{{ user.name }}</span>
+  </button>
+</app-card>
