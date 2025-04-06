@@ -1,2 +1,9 @@
 <span> <ng-content></ng-content> </span>
-<ng-content select=".icon"></ng-content>
+<ng-content select=".icon"> -> </ng-content>
+<!--insted of class selector that is .icon we can simple selector that is icon only e.g select="icon"
+  and then where we use this component we can use <span ngProjectAs="icon">→</span> or <icon>→</icon> in the header component.
+
+  We can have fallback content in case the selector is not found.
+  e.g <ng-content select="icon">✉</ng-content> so if we don't have icon in the header component then it will show ✉ icon.
+  But if we have icon in the header component then it will show the icon from the header component.
+-->
