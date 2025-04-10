@@ -1,9 +1,18 @@
-<form>
+<form (ngSubmit)="onSubmit(titleElement, descriptionElement)">
   <app-control label="Ticket Title:">
-    <input type="text" id="ticketTitle" name="ticketTitle" /><br /><br />
+    <input
+      type="text"
+      id="ticketTitle"
+      name="ticketTitle"
+      #titleElement
+    /><br /><br />
   </app-control>
   <app-control label="Description:">
-    <textarea id="ticketDescription" name="ticketDescription"></textarea
+    <textarea
+      id="ticketDescription"
+      name="ticketDescription"
+      #descriptionElement
+    ></textarea
     ><br /><br />
   </app-control>
   <p>
