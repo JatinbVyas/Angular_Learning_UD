@@ -16,6 +16,7 @@ export class AddNewTicketComponent {
   // The 'ticketForm' is the template reference variable defined in the template.
   // The 'HTMLFormElement' is the type of the element you want to access.
   // The 'ElementRef' is a wrapper around the native element that allows you to access its properties and methods.
+
   //@ViewChild('ticketForm') formControl?: ElementRef<HTMLFormElement>;
 
   //viewChild is a function that allows you to access a child component or directive in the template.
