@@ -1,4 +1,10 @@
-import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  output,
+  viewChild,
+  ViewChild,
+} from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
@@ -26,13 +32,21 @@ export class AddNewTicketComponent {
   // viewChild.required is used to make the formControl property required.
   private formControl = viewChild<ElementRef<HTMLFormElement>>('ticketForm');
 
+  addEvent = output<{ title: string; description: string }>();
+
+  enteredTitle = ''; // Property to store the entered title
+  enteredDescription = ''; // Property to store the entered description
+
   onSubmit(
     titleElement: HTMLInputElement,
     descriptionElement: HTMLTextAreaElement
   ) {
     const title = titleElement.value;
     const description = descriptionElement.value;
-    console.log(title, description);
+    this.addEvent.emit({
+      title: this.enteredTitle,
+      description: this.enteredDescription,
+    }); // Emit the event with the title and description values
     this.formControl()?.nativeElement.reset(); // Reset the form after submission
   }
 }
