@@ -22,5 +22,10 @@ export class SafeLinkDirective {
     if (!confirmLeave) {
       event.preventDefault();
     }
+
+    // Here we are adding a query parameter to the link address
+    // This is just an example, you can add any query parameter you want
+    const linkAddress = (event.target as HTMLAnchorElement).href;
+    (event.target as HTMLAnchorElement).href = linkAddress + '?from=myApp';
   }
 }
