@@ -12,7 +12,7 @@ export class AuthDirectiveDirective {
   private authService = inject(AuthService);
   constructor() {
     effect(() => {
-      if (this.authService.activePermission() !== this.userType) {
+      if (this.authService.activePermission() === this.userType) {
         console.log('Show element');
       } else {
         console.log('Hide element');
