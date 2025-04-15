@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit(titleElement, descriptionElement)" #ticketForm>
+  <app-control label="Ticket Title:">
+    <input
+      type="text"
+      id="ticketTitle"
+      name="ticketTitle"
+      #titleElement
+      #inputvar
+      [(ngModel)]="enteredTitle"
+    /><br /><br />
+  </app-control>
+  <app-control label="Description:">
+    <textarea
+      id="ticketDescription"
+      name="ticketDescription"
+      #descriptionElement
+      #inputvar
+      [(ngModel)]="enteredDescription"
+    ></textarea
+    ><br /><br />
+  </app-control>
+  <p>
+    <button type="submit" appButton>
+      Submit
+      <span class="icon">✉</span>
+    </button>
+  </p>
+</form>
