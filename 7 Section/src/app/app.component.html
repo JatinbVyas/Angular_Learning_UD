@@ -12,7 +12,17 @@
   <!-- <p *ngIf="isAdmin()">This is only for admin logins.</p> -->
   <!-- here instead of using userType we can give alias name as appAuthDirective to userType input property in directive class -->
 
-  <ng-template appAuthDirective userType="admin">
+  <!-- <ng-template appAuthDirective userType="admin">
     <p>This is only for admin logins.</p>
-  </ng-template>
+  </ng-template> -->
+  <!-- instead of ng-template we can use * synatax also-->
+  <p *appAuthDirective="'admin'" class="protected-content admin">
+    This is only for admin logins.
+  </p>
+  <p *appAuthDirective="'user'" class="protected-content unauthenticated">
+    This is only for user logins.
+  </p>
+  <p *appAuthDirective="'guest'" class="protected-content authenticated">
+    This is only for guest logins.
+  </p>
 </main>

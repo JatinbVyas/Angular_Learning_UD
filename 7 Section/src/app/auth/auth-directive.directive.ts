@@ -14,7 +14,7 @@ import { AuthService } from './auth.service';
   standalone: true,
 })
 export class AuthDirectiveDirective {
-  @Input({ required: true }) userType!: Permission;
+  @Input({ required: true, alias: 'appAuthDirective' }) userType!: Permission;
   private authService = inject(AuthService);
 
   // This TemplateRef is the template that will be rendered when the condition is true
@@ -31,6 +31,7 @@ export class AuthDirectiveDirective {
         // The view is created with the context of the template, which is the data that will be used in the template
         this.viewContainer.createEmbeddedView(this.templateRef);
       } else {
+        console.log(this.authService.activePermission());
         this.viewContainer.clear();
       }
     });
