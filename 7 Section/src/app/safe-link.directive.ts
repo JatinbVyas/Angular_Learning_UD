@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, input } from '@angular/core';
 
 @Directive({
   selector: 'a[appSafeLink]',
@@ -8,6 +8,7 @@ import { Directive } from '@angular/core';
   },
 })
 export class SafeLinkDirective {
+  queryParam = input('myApp', { alias: 'appSafeLink' });
   /**
    * Here we crated a directive that will be used to confirm the user before leaving the page.
    * This directive will be used in the learning resources component to confirm the user before leaving the page.
@@ -26,6 +27,7 @@ export class SafeLinkDirective {
     // Here we are adding a query parameter to the link address
     // This is just an example, you can add any query parameter you want
     const linkAddress = (event.target as HTMLAnchorElement).href;
-    (event.target as HTMLAnchorElement).href = linkAddress + '?from=myApp';
+    (event.target as HTMLAnchorElement).href =
+      linkAddress + '?from=' + this.queryParam();
   }
 }
