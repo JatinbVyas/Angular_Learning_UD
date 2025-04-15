@@ -16,7 +16,7 @@
     <p>This is only for admin logins.</p>
   </ng-template> -->
   <!-- instead of ng-template we can use * synatax also-->
-  <p *appAuthDirective="'admin'" class="protected-content admin">
+  <p *appAuthDirective="'admin'" appLog class="protected-content admin">
     This is only for admin logins.
   </p>
   <p *appAuthDirective="'user'" class="protected-content unauthenticated">
