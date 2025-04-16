@@ -8,7 +8,7 @@ export class TempraturePipe {
   transform(
     value: string | number,
     inputType: 'cel' | 'fah',
-    outputType: 'cel' | 'fah'
+    outputType?: 'cel' | 'fah'
   ) {
     let val: number;
     if (typeof value === 'string') {
@@ -33,7 +33,7 @@ export class TempraturePipe {
     } else {
       symbol = outputType === 'cel' ? '°C' : '°F';
     }
-    return `${outputValue}${symbol}`;
+    return `${outputValue.toFixed(2)}${symbol}`;
   }
   // transform(value: number, unit: string): string {
   //   if (unit === 'C') {
